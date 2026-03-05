@@ -10,10 +10,7 @@ jobs:
     steps:
       - name: Send Discord Notification
         run: |
-          curl -H "Content-Type: application/json" \
-          -d '{
-            "content": "🔔 **SOMRP Bot Update!**\n👤 ${{ github.actor }} push ke `${{ github.ref_name }}`\n📝 ${{ github.event.commits[0].message }}\n🔗 ${{ github.event.compare }}",
-            "username": "GitHub Bot",
-            "avatar_url": "https://avatars.githubusercontent.com/u/9919?s=200&v=4"
-          }' \
-          ${{ https://discord.com/api/webhooks/1479015588537040990/CNxvyyoxp2X-t43TPuiA8svjm7lVjcC5KiCezU7N1Hf5SnaDtSjVTIa64TMH4Oae8pCw }}
+          curl -X POST \
+          -H "Content-Type: application/json" \
+          -d "{\"content\":\"🔔 **SOMRP Bot Update!**\n👤 ${{ github.actor }} push ke \`${{ github.ref_name }}\`\n📝 ${{ github.event.commits[0].message }}\n🔗 ${{ github.event.compare }}\"}" \
+          "${{ secrets.DISCORD_WEBHOOK }}"
