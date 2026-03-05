@@ -12,5 +12,5 @@ jobs:
         run: |
           curl -X POST \
             -H "Content-Type: application/json" \
-            -d "{\"content\":\"🔔 **SOMRP Bot Update!**\n👤 ${{ github.actor }} push ke ${{ github.ref_name }}\n📝 ${{ github.event.commits[0].message }}\n🔗 ${{ github.event.compare }}\"}" \
+            -d "{\"content\":\"🔔 **MAJU JAYA BOT Bot Update!**\n👤 Wandi push ke ${{ github.ref_name }}\n📝 ${{ github.event.commits[0].message }}\n" \
             "${{ secrets.DISCORD_WEBHOOK }}"
