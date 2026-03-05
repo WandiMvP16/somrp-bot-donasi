@@ -8,6 +8,18 @@ jobs:
   notify:
     runs-on: ubuntu-latest
     steps:
+      - name: Debug: Cek Secret
+        run: |
+          echo "Webhook URL length: ${#DISCORD_WEBHOOK}"
+          if [ -z "$DISCORD_WEBHOOK" ]; then
+            echo "❌ ERROR: DISCORD_WEBHOOK is empty!"
+            exit 1
+          else
+            echo "✅ Secret loaded successfully"
+          fi
+        env:
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
+
       - name: Send Discord Notification
         run: |
           curl -X POST \
